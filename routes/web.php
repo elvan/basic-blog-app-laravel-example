@@ -23,4 +23,4 @@ Route::get('article/{slug}', function ($slug) {
     return view('article', [
         'article' => $article,
     ]);
-});
+})->where('slug', '[A-z0-9\-]+');
