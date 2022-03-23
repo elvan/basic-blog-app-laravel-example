@@ -9,17 +9,7 @@
     </head>
 
     <body>
-        <article>
-            <h1>
-                <a href="/article">My First Article</a>
-            </h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                ad voluptatibus quas provident illo, saepe ipsam repellendus
-                doloribus asperiores tenetur ut, quae cupiditate assumenda iure
-                quaerat, incidunt a inventore deleniti!
-            </p>
-        </article>
+        <?= $article ?>
 
         <a href="/">Go Back</a>
     </body>

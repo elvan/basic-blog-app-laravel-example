@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('articles');
 });
 
-Route::get('article', function () {
-    return view('article');
+Route::get('article/{slug}', function ($slug) {
+    $article = file_get_contents(__DIR__ . "/../resources/views/articles/{$slug}.html");
+
+    return view('article', [
+        'article' => $article,
+    ]);
 });

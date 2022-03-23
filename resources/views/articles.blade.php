@@ -9,26 +9,24 @@
     </head>
 
     <body>
-        <article>
-            <h1>
-                <a href="/article">My First Article</a>
-            </h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                ad voluptatibus quas provident illo, saepe ipsam repellendus
-                doloribus asperiores tenetur ut, quae cupiditate assumenda iure
-                quaerat, incidunt a inventore deleniti!
-            </p>
-        </article>
-
-        <article>
-            <h1>
-                <a href="/article">My Second Article</a>
-            </h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Pariatur reiciendis, minus nemo numquam tempore ullam iusto
-                recusandae. Quidem unde corporis similique corrupti, quia
-                aperiam, autem inventore consequuntur, quod hic neque.
-            </p>
+        <h1>BasicBlog Articles</h1>
+        <ul>
+            <li>
+                <h2>
+                    <a href="/article/01-my-first-article">My First Article</a>
+                </h2>
+            </li>
+            <li>
+                <h2>
+                    <a href="/article/02-my-second-article">My Second
+                        Article</a>
+                </h2>
+            </li>
+            <li>
+                <h2>
+                    <a href="/article/03-my-third-article">My Third Article</a>
+                </h2>
+            </li>
+        </ul>
     </body>
 </html>
