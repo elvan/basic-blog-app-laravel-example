@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Cache;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,22 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('articles');
+    $articles = Article::all();
+
+    return view('articles', [
+        'articles' => $articles
+    ]);
 });
 
 Route::get('article/{slug}', function ($slug) {
-    $path = __DIR__ . "/../resources/views/articles/{$slug}.html";
-
-    if (!file_exists($path)) {
-        abort(404);
-    }
-
-
-    $article = Cache::remember("post.{$slug}", 3600, function () use ($path) {
-        return file_get_contents($path);
-    });
-
     return view('article', [
-        'article' => $article,
+        'article' => Article::find($slug)
     ]);
 })->where('slug', '[A-z0-9\-]+');

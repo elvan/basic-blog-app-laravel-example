@@ -11,22 +11,9 @@
     <body>
         <h1>BasicBlog Articles</h1>
         <ul>
-            <li>
-                <h2>
-                    <a href="/article/01-my-first-article">My First Article</a>
-                </h2>
-            </li>
-            <li>
-                <h2>
-                    <a href="/article/02-my-second-article">My Second
-                        Article</a>
-                </h2>
-            </li>
-            <li>
-                <h2>
-                    <a href="/article/03-my-third-article">My Third Article</a>
-                </h2>
-            </li>
+            <?php foreach ($articles as $article) { ?>
+            <?= $article ?>
+            <?php } ?>
         </ul>
     </body>
 </html>
