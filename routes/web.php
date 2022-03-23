@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,16 @@ Route::get('/', function () {
 });
 
 Route::get('article/{slug}', function ($slug) {
-    $article = file_get_contents(__DIR__ . "/../resources/views/articles/{$slug}.html");
+    $path = __DIR__ . "/../resources/views/articles/{$slug}.html";
+
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+
+    $article = Cache::remember("post.{$slug}", 3600, function () use ($path) {
+        return file_get_contents($path);
+    });
 
     return view('article', [
         'article' => $article,
