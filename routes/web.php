@@ -22,7 +22,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('article/{slug}', function ($slug) {
+Route::get('articles/{slug}', function ($slug) {
     return view('article', [
         'article' => Article::find($slug)
     ]);
