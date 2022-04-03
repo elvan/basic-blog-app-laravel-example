@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -20,18 +19,20 @@ class Article
 
     static function all()
     {
-        $files = File::files(resource_path('articles'));
+        return Cache::remember('articles.all', now()->addSeconds(5), function () {
+            $files = File::files(resource_path('articles'));
 
-        return collect($files)->map(function ($file) {
-            $document = YamlFrontMatter::parseFile($file);
+            return collect($files)->map(function ($file) {
+                $document = YamlFrontMatter::parseFile($file);
 
-            return new Article(
-                $document->title,
-                $document->excerpt,
-                $document->date,
-                $document->body(),
-                $document->slug
-            );
+                return new Article(
+                    $document->title,
+                    $document->excerpt,
+                    $document->date,
+                    $document->body(),
+                    $document->slug
+                );
+            })->sortByDesc('date');
         });
     }
 
