@@ -23,8 +23,8 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('articles/{slug}', function ($slug) {
-    return view('article', [
-        'article' => Article::find($slug)
+Route::get('posts/{post:slug}', function (Post $post) {
+    return view('post', [
+        'post' => $post
     ]);
-})->where('slug', '[A-z0-9\-]+');
+});
