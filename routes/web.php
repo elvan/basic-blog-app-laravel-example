@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $articles = Article::all();
-
-    return view('articles', [
-        'articles' => $articles
+    return view('posts', [
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
     ]);
-});
+})->name('home');
 
 Route::get('articles/{slug}', function ($slug) {
     return view('article', [
