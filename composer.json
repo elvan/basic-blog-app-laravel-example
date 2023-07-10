@@ -15,14 +15,15 @@
         "laravel/framework": "^v8.83.27",
         "laravel/sanctum": "^v2.15.1",
         "laravel/tinker": "^v2.8.1",
-        "spatie/yaml-front-matter": "^2.0.6"
+        "mailchimp/marketing": "3.0.80",
+        "spatie/yaml-front-matter": "^2.0.7"
     },
     "require-dev": {
         "facade/ignition": "^2.17.7",
         "laravel/sail": "^v1.23.0",
         "mockery/mockery": "^1.6.2",
         "nunomaduro/collision": "^v5.11.0",
-        "phpunit/phpunit": "^9.6.9"
+        "phpunit/phpunit": "^9.6.10"
     },
     "autoload": {
         "psr-4": {
