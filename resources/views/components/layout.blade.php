@@ -35,13 +35,25 @@
                 @auth
                     <x-dropdown>
                         <x-slot name="trigger">
-                            <button class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</button>
+                            <button class="text-xs font-bold uppercase">
+                                Welcome, {{ auth()->user()->name }}!
+                            </button>
                         </x-slot>
 
-                        <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">Dashboard</x-dropdown-item>
-                        <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                        @admin
+                            <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">
+                                Dashboard
+                            </x-dropdown-item>
+
+                            <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">
+                                New Post
+                            </x-dropdown-item>
+                        @endadmin
+
                         <x-dropdown-item href="#" x-data="{}"
-                            @click.prevent="document.querySelector('#logout-form').submit()">Log Out</x-dropdown-item>
+                            @click.prevent="document.querySelector('#logout-form').submit()">
+                            Log Out
+                        </x-dropdown-item>
 
                         <form id="logout-form" method="POST" action="/logout" class="hidden">
                             @csrf
@@ -49,10 +61,14 @@
                     </x-dropdown>
                 @else
                     <a href="/register"
-                        class="text-xs font-bold uppercase {{ request()->is('register') ? 'text-blue-500' : '' }}">Register</a>
+                        class="text-xs font-bold uppercase {{ request()->is('register') ? 'text-blue-500' : '' }}">
+                        Register
+                    </a>
+
                     <a href="/login"
-                        class="ml-6 text-xs font-bold uppercase {{ request()->is('login') ? 'text-blue-500' : '' }}">Log
-                        In</a>
+                        class="ml-6 text-xs font-bold uppercase {{ request()->is('login') ? 'text-blue-500' : '' }}">
+                        Log In
+                    </a>
                 @endauth
 
                 <a href="#newsletter"
@@ -67,6 +83,7 @@
         <footer id="newsletter"
             class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
             <img src="/images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
+
             <h5 class="text-3xl">Stay in touch with the latest posts</h5>
             <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
 
